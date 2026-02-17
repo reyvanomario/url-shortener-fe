@@ -21,7 +21,7 @@ function copyToClipboard(text: string) {
         })
 }
 
-const baseUrl = import.meta.env.VITE_APP_URL || 'http://localhost:5173'
+const baseUrl = import.meta.env.VITE_DOMAIN || 'http://localhost:5173'
 const shortUrlFull = `${baseUrl}/${props.url.shortUrl}`
 </script>
 
