@@ -105,17 +105,26 @@ export const useUrlStore = defineStore('url', {
             const token = getAuthToken();
 
             try {
-                const response = await api.post<CommonResponseInterface<Url>>(`${apiUrl}/shorten`, urlData, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
+                const headers: Record<string, string> = {
+                    'Content-Type': 'application/json'
+                };
+
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
+
+                const response = await api.post<CommonResponseInterface<Url>>(
+                    `${apiUrl}/shorten`,
+                    urlData,
+                    { headers }
+                );
 
                 console.log('Backend response:', response.data.data)
               
                 if (response.status === 201) {
-                    this.urls.push(response.data.data);
+                    if (token) {
+                        this.urls.push(response.data.data);
+                    }
                     toast.success('Url shortened successfully')
                     console.log('res', response.data.data)
                     return response.data.data;
