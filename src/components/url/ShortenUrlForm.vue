@@ -172,7 +172,7 @@ function copyToClipboard(text: string) {
                 {{ displayResult.fullShortUrl }}
               </a>
               <button 
-                @click="copyToClipboard(result.shortUrl)"
+                @click="copyToClipboard(displayResult.fullShortUrl)"
                 class="text-gray-500 hover:text-gray-700"
                 title="Copy to clipboard"
               >

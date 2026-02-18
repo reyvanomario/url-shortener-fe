@@ -5,7 +5,7 @@ import type { CommonResponseInterface } from '@/interfaces/common.response.inter
 import { useRouter } from 'vue-router';
 import { getAuthToken, handleAuthError } from '@/lib/auth';
 import api from '@/lib/axios';
-import type { UrlStats, UrlStatsResponse } from '@/interfaces/stats.interface';
+import type { UrlStats } from '@/interfaces/stats.interface';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 

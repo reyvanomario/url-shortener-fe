@@ -53,21 +53,6 @@ const handleShortenUrl = async (data: CreateUrlRequest): Promise<any> => {
     }
 }
 
-// // Handle delete URL
-// const handleDelete = async (urlId: number) => {
-//     if (confirm('Apakah Anda yakin ingin menghapus URL ini?')) {
-//         const deleted = await urlStore.deleteUrl(urlId)
-//         if (deleted) {
-//             await getCurrentUserUrls()
-//         }
-//     }
-// }
-
-// Handle edit URL
-const handleEdit = (url: any) => {
-    router.push(`/edit/${url.id}`)
-}
-
 // Fetch URLs on mount
 onMounted(async () => {
     if (isAuthenticated()) {
@@ -142,7 +127,6 @@ onMounted(async () => {
                         v-for="url in urls"
                         :key="url.id"
                         :url="url"
-                        @edit="handleEdit"
                     />
                 </div>
             </div>
