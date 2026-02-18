@@ -5,8 +5,6 @@ import { useRoute } from 'vue-router'
 import { useStats } from '@/composables/useStats'
 import StatsOverview from '@/components/stats/StatsOverview.vue'
 import ClicksChart from '@/components/stats/ClicksChart.vue'
-import CountriesTable from '@/components/stats/CountriesTable.vue'
-import ReferersTable from '@/components/stats/ReferersTable.vue'
 import { toast } from 'vue-sonner'
 import { getFullShortUrl } from '@/lib/config'
 
@@ -31,14 +29,11 @@ const {
 const totalClicks = computed(() => stats.value?.totalClicks || 0)
 const fullUrl = computed(() => stats.value?.fullUrl || '')
 const shortUrlCode = computed(() => stats.value?.shortUrl || shortUrl)
-const topCountries = computed(() => stats.value?.topCountries || [])
-const topReferers = computed(() => stats.value?.topReferers || [])
 const dailyBreakdown = computed(() => stats.value?.dailyBreakdown || [])
 
 const hasData = computed(() => !!stats.value)
 const hasClicks = computed(() => totalClicks.value > 0)
 
-const activeTab = ref<'overview' | 'countries' | 'referers'>('overview')
 
 const fullShortUrl = computed(() => getFullShortUrl(shortUrl))
 
@@ -121,49 +116,11 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- Tabs -->
-                <div class="border-b">
-                    <nav class="flex gap-4">
-                        <button 
-                            @click="activeTab = 'overview'"
-                            :class="[
-                                'px-4 py-2 font-medium text-sm border-b-2 transition-colors',
-                                activeTab === 'overview' 
-                                    ? 'border-blue-500 text-blue-600' 
-                                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                            ]"
-                        >
-                            Overview
-                        </button>
-                        <button 
-                            @click="activeTab = 'countries'"
-                            :class="[
-                                'px-4 py-2 font-medium text-sm border-b-2 transition-colors',
-                                activeTab === 'countries' 
-                                    ? 'border-blue-500 text-blue-600' 
-                                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                            ]"
-                        >
-                            Countries
-                        </button>
-                        <button 
-                            @click="activeTab = 'referers'"
-                            :class="[
-                                'px-4 py-2 font-medium text-sm border-b-2 transition-colors',
-                                activeTab === 'referers' 
-                                    ? 'border-blue-500 text-blue-600' 
-                                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                            ]"
-                        >
-                            Referers
-                        </button>
-                    </nav>
-                </div>
 
                 <!-- Tab Content -->
                 <div class="mt-6">
                     <!-- Overview Tab -->
-                    <div v-if="activeTab === 'overview'">
+                    <div>
                         <ClicksChart :daily-clicks="filteredDailyClicks || dailyBreakdown" />
                         
                         <!-- URL Info Card -->
@@ -203,16 +160,6 @@ onMounted(() => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Countries Tab -->
-                    <div v-if="activeTab === 'countries'">
-                        <CountriesTable :countries="topCountries" />
-                    </div>
-
-                    <!-- Referers Tab -->
-                    <div v-if="activeTab === 'referers'">
-                        <ReferersTable :referers="topReferers" />
                     </div>
                 </div>
             </div>

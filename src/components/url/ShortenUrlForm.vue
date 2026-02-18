@@ -153,7 +153,6 @@ function copyToClipboard(text: string) {
           :disabled="loading"
           class="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center gap-2"
         >
-          <span v-if="loading">⏳</span>
           <span>{{ loading ? 'Processing...' : 'Shorten!' }}</span>
         </button>
       </form>
@@ -177,7 +176,7 @@ function copyToClipboard(text: string) {
                 class="text-gray-500 hover:text-gray-700"
                 title="Copy to clipboard"
               >
-                📋
+                Copy
               </button>
             </div>
           </div>

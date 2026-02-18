@@ -10,21 +10,13 @@ export interface CountryStat {
     clicks: number
 }
 
-export interface RefererStat {
-    referer: string
-    clicks: number
-}
-
 export interface UrlStats {
     shortUrl: string
     fullUrl: string
     totalClicks: number
     dailyBreakdown: DailyClick[]
-    topCountries: CountryStat[]
-    topReferers: RefererStat[]
 }
 
-// Untuk response dari store (bisa undefined)
 export type UrlStatsResult = UrlStats | null | undefined
 
 // Response wrapper
