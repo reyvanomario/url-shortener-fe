@@ -56,7 +56,7 @@ export const useAuthStore = defineStore('auth', {
 
                     this.cleanUrlParameters();
                 } catch (error) {
-                    console.error('❌ Failed to parse auth data from URL:', error);
+                    console.error('Failed to parse auth data from URL:', error);
                     this.token = getAuthToken();
                     this.user = getCurrentUser();
                 }
@@ -131,7 +131,6 @@ export const useAuthStore = defineStore('auth', {
 
                 toast.success('Logout successful');
 
-                // Redirect ke auth service login
                 window.location.href = '/login';
 
             } catch (error) {

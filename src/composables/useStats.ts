@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { useStatsStore } from '@/stores/stats.store'
-import type { UrlStats, TimeRange, DailyClick } from '@/interfaces/stats.interface'
+import type { UrlStats, TimeRange } from '@/interfaces/stats.interface'
 import { toast } from 'vue-sonner'
 
 

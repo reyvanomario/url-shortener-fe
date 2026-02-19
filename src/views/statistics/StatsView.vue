@@ -1,6 +1,5 @@
-<!-- views/StatsView.vue -->
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStats } from '@/composables/useStats'
 import StatsOverview from '@/components/stats/StatsOverview.vue'
@@ -20,19 +19,13 @@ const {
     filteredDailyClicks,
     rangeTotalClicks,
     averageClicksPerDay,
-    clicksToday,
     fetchStats,
-    // exportStats
 } = useStats(shortUrl)
 
 
 const totalClicks = computed(() => stats.value?.totalClicks || 0)
 const fullUrl = computed(() => stats.value?.fullUrl || '')
-const shortUrlCode = computed(() => stats.value?.shortUrl || shortUrl)
 const dailyBreakdown = computed(() => stats.value?.dailyBreakdown || [])
-
-const hasData = computed(() => !!stats.value)
-const hasClicks = computed(() => totalClicks.value > 0)
 
 
 const fullShortUrl = computed(() => getFullShortUrl(shortUrl))
@@ -94,7 +87,6 @@ onMounted(() => {
                     :average-daily="averageClicksPerDay || 0"
                 />
 
-                <!-- Time Range Selector (jika diaktifkan) -->
                 <div class="bg-white rounded-lg shadow-sm p-4">
                     <div class="flex items-center justify-between">
                         <h3 class="font-semibold text-gray-700">Period</h3>

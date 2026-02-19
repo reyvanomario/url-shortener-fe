@@ -3,7 +3,6 @@ import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/auth.store';
 import type { LoginRequest } from '@/interfaces/auth.interface';
-import { toast } from 'vue-sonner';
 
 
 const route = useRoute();
@@ -28,7 +27,7 @@ const handleLogin = async () => {
 <template>
   <section class="bg-gray-50">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+      <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
           URL Shortener  
       </a>
       <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
