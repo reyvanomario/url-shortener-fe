@@ -29,7 +29,7 @@ const shortUrlFull = `${baseUrl}/${props.url.shortUrl}`
     <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-gray-100">
         <!-- Card Header -->
         <div class="p-4 border-b border-gray-100">
-            <div class="flex justify-between items-start">
+            <div class="flex justify-between items-center">
                 <div class="flex-1 min-w-0">
                     <a 
                         :href="shortUrlFull"
@@ -37,21 +37,20 @@ const shortUrlFull = `${baseUrl}/${props.url.shortUrl}`
                         class="text-blue-600 hover:text-blue-800 font-medium truncate block"
                         :title="shortUrlFull"
                     >
-                        {{ fullShortUrl }}
+                        /{{ props.url.shortUrl }}
                     </a>
                 </div>
                 <div class="flex gap-3 ml-2">
-                    <button 
+                    <button type="button" 
                         @click="copyToClipboard(shortUrlFull)"
-                        class="text-gray-400 hover:text-gray-600 transition-colors"
-                        title="Salin URL"
-                    >
-                        Copy
+                        class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                        title="Copy URL"
+                    >Copy
                     </button>
                     <router-link 
                         :to="`/stats/${url.shortUrl}`"
-                        class="text-gray-400 hover:text-gray-600 transition-colors"
-                        title="Lihat Statistik"
+                        class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                        title="View Statistics"
                     >
                         View Statistics
                     </router-link>

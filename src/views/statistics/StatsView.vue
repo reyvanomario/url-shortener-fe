@@ -35,7 +35,7 @@ const recentClicks = computed(() => stats.value?.recentClicks || [])
 const copyShortUrl = () => {
     if (fullUrl.value) {
         navigator.clipboard.writeText(fullShortUrl.value)
-        toast.success('URL berhasil disalin!')
+        toast.success('URL copied to clipboard!')
     }
 }
 
@@ -126,12 +126,11 @@ onMounted(() => {
                                         <code class="text-blue-600 bg-blue-50 px-2 py-1 rounded">
                                             {{ fullShortUrl }}
                                         </code>
-                                        <button 
+                                        <button type="button" 
                                             @click="copyShortUrl"
-                                            class="text-gray-400 hover:text-gray-600 mx-2"
-                                            title="Copy full URL"
-                                        >
-                                            Copy
+                                            class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                                            title="Copy URL"
+                                        >Copy
                                         </button>
                                     </div>
                                 </div>
