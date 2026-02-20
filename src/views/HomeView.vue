@@ -3,7 +3,6 @@ import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import ShortenUrlForm from '@/components/url/ShortenUrlForm.vue'
 import { useUrlStore } from '@/stores/url.store'
-import { getCurrentUser } from '@/lib/auth'
 import type { CreateUrlRequest } from '@/interfaces/url.interface'
 import { isAuthenticated } from '@/lib/rbac'
 import UrlCard from '@/components/url/UrlCard.vue'
@@ -116,7 +115,6 @@ onMounted(async () => {
 
                 <!-- Empty State -->
                 <div v-else-if="urls.length === 0" class="text-center py-8 sm:py-12 bg-white rounded-lg shadow-sm px-4">
-                    <div class="text-4xl sm:text-6xl mb-4">🔗</div>
                     <p class="text-sm sm:text-base text-gray-500 mb-2">No URL yet</p>
                 </div>
 

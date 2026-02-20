@@ -25,7 +25,7 @@ const {
 
 const totalClicks = computed(() => stats.value?.totalClicks || 0)
 const fullUrl = computed(() => stats.value?.fullUrl || '')
-const dailyBreakdown = computed(() => stats.value?.dailyBreakdown || [])
+const dailyClicks = computed(() => stats.value?.dailyClicks || [])
 
 
 const fullShortUrl = computed(() => getFullShortUrl(shortUrl))
@@ -114,7 +114,7 @@ onMounted(() => {
                 <div class="mt-6">
                     <!-- Overview Tab -->
                     <div>
-                        <ClicksChart :daily-clicks="filteredDailyClicks || dailyBreakdown" />
+                        <ClicksChart :daily-clicks="filteredDailyClicks || dailyClicks" />
                         
                         <!-- URL Info Card -->
                         <div class="mt-6 bg-white rounded-lg shadow-sm p-6">

@@ -26,14 +26,17 @@ export function useStats(shortUrl: string) {
         if (!stats.value) return []
 
         const range = timeRanges.find(r => r.value === selectedRange.value)
-        if (!range) return stats.value.dailyBreakdown
+        if (!range) return stats.value.dailyClicks
 
-        if (range.value === 'all') return stats.value.dailyBreakdown
+        if (range.value === 'all') return stats.value.dailyClicks
 
         const today = new Date()
         today.setHours(0, 0, 0, 0)
 
-        return stats.value.dailyBreakdown.filter(item => {
+        console.log('🎯 Selected range:', range.value)
+        console.log('📊 Original dailyClicks:', stats.value.dailyClicks)
+
+        return stats.value.dailyClicks.filter(item => {
             const itemDate = new Date(item.date)
             itemDate.setHours(0, 0, 0, 0)
 
@@ -63,6 +66,8 @@ export function useStats(shortUrl: string) {
             return clicks
         }
 
+        console.log('days', days)
+
         return Math.round(clicks / days)
     })
 
@@ -70,7 +75,7 @@ export function useStats(shortUrl: string) {
         if (!stats.value) return 0
 
         const today = new Date().toISOString().split('T')[0]
-        const todayData = stats.value.dailyBreakdown.find(d => d.date === today)
+        const todayData = stats.value.dailyClicks.find(d => d.date === today)
         return todayData?.clicks || 0
     })
 

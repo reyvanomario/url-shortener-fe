@@ -23,7 +23,7 @@ export interface UrlStats {
     shortUrl: string
     fullUrl: string
     totalClicks: number
-    dailyBreakdown: DailyClick[]
+    dailyClicks: DailyClick[]
     recentClicks: RecentClick[]
 }
 
