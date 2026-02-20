@@ -76,7 +76,7 @@ export const useUrlStore = defineStore('url', {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                console.log("res", response.data.data)
+                // console.log("res", response.data.data)
                 return response.data.data;
             } catch (error) {
                 if (axios.isAxiosError(error) && error.response) {
@@ -119,14 +119,12 @@ export const useUrlStore = defineStore('url', {
                     { headers }
                 );
 
-                console.log('Backend response:', response.data.data)
               
                 if (response.status === 201) {
                     if (token) {
                         this.urls.push(response.data.data);
                     }
                     toast.success('Url shortened successfully')
-                    console.log('res', response.data.data)
                     return response.data.data;
                 }
 

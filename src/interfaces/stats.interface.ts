@@ -5,6 +5,15 @@ export interface DailyClick {
     clicks: number
 }
 
+export interface RecentClick {
+    ip: string
+    country: string
+    device: string
+    browser: string
+    os: string
+    timestamp: string
+}
+
 export interface CountryStat {
     country: string
     clicks: number
@@ -15,6 +24,7 @@ export interface UrlStats {
     fullUrl: string
     totalClicks: number
     dailyBreakdown: DailyClick[]
+    recentClicks: RecentClick[]
 }
 
 export type UrlStatsResult = UrlStats | null | undefined

@@ -22,8 +22,6 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use((response) => {
     if (response.data && typeof response.data === 'object') {
-        console.log('🔄 Response before:', response.data);
-
         response.data = humps.camelizeKeys(response.data);
     }
     return response;

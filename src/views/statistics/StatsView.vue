@@ -29,6 +29,7 @@ const dailyBreakdown = computed(() => stats.value?.dailyBreakdown || [])
 
 
 const fullShortUrl = computed(() => getFullShortUrl(shortUrl))
+const recentClicks = computed(() => stats.value?.recentClicks || [])
 
 // Copy Short URL to clipboard
 const copyShortUrl = () => {
@@ -150,6 +151,49 @@ onMounted(() => {
                                         <p class="text-lg font-semibold">{{ totalClicks }}</p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 bg-white rounded-lg shadow-sm p-6">
+                            <h3 class="font-semibold text-gray-700 mb-4">Recent Clicks (Last 10)</h3>
+                            <div v-if="recentClicks.length === 0" class="text-center py-4 text-gray-500">
+                                No recent clicks yet.
+                            </div>
+                            <div v-else class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Device</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Browser</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">OS</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">IP Address</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr v-for="(click, index) in recentClicks" :key="index">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ new Date(click.timestamp).toLocaleString() }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ click.device || '-' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ click.browser || '-' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ click.os || '-' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ click.ip || '-' }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ click.country || '-' }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

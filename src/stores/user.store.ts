@@ -93,7 +93,6 @@ export const useUserStore = defineStore('user', {
             catch (error) {
                 this.error = error instanceof Error ? error.message : 'Unknown error';
                 toast.error(`Error saat register user: ${this.error}`);
-                console.log(this.error);
             } finally {
                 this.loading = false;
             }

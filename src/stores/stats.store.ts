@@ -49,8 +49,6 @@ export const useStatsStore = defineStore('stats', {
                     }
                 );
 
-                console.log('Dashboard response:', response.data);
-
                 if (response.data.status === 200) {
                     this.stats = response.data.data;
 
